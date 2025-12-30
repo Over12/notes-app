@@ -33,3 +33,22 @@ export const initializeStyle = () => {
     changeStyle('verdant')
   }
 }
+
+export const getCurrentStyle = (): stylesOptions => {
+  const savedStyle = localStorage.getItem('style') as stylesOptions | null
+  if (savedStyle && styles.includes(savedStyle)) {
+    return savedStyle
+  } else {
+    return 'verdant'
+  }
+}
+
+export const restartStyle = () => {
+  const styleSelect = document.getElementById('styles') as HTMLSelectElement | null
+  if (styleSelect) {
+    styleSelect.value = 'verdant'
+  }
+
+  localStorage.removeItem('style')
+  changeStyle('verdant')
+}

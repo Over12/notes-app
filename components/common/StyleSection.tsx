@@ -1,6 +1,6 @@
 'use client'
 
-import { handleStyleChange } from '@/lib/StyleChanger'
+import { getCurrentStyle, handleStyleChange } from '@/lib/StyleChanger'
 import { useEffect, useState } from 'react'
 
 export default function StyleSection() {
@@ -8,7 +8,7 @@ export default function StyleSection() {
   const [mounted, setMounted] = useState<boolean>(false)
 
   useEffect(() => {
-    const savedStyle = localStorage.getItem('style') || 'verdant'
+    const savedStyle = getCurrentStyle()
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setCurrentStyle(savedStyle)
     setMounted(true)
