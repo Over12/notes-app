@@ -14,7 +14,6 @@ const STYLE_SCRIPT = `
     const styles = ['verdant','lagoon','orchid','indigo','ember','crimson'];
     const savedStyle = localStorage.getItem('style');
     const root = document.documentElement;
-    const styleSelect = document.getElementById('styles');
 
     styles.forEach(s => root.classList.remove(s));
 
