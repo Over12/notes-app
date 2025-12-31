@@ -1,0 +1,45 @@
+{
+  "notes": [
+    {
+      "id": "N01",
+      "title": "Nota Fijada",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "isPinned": true,
+      "tags": [
+        "Trabajo",
+        "Ideas"
+      ],
+      "createdAt": "2025-06-01T10:00:00Z"
+    },
+    {
+      "id": "N02",
+      "title": "Otra Nota",
+      "content": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "isPinned": false,
+      "tags": [
+        "Personal"
+      ],
+      "createdAt": "2024-06-02T12:30:00Z"
+    },
+    {
+      "id": "N03",
+      "title": "Tercera Nota",
+      "content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "isPinned": false,
+      "tags": [
+        "Trabajo"
+      ],
+      "createdAt": "2024-06-03T09:15:00Z"
+    },
+    {
+      "id": "N04",
+      "title": "Cuarta Nota",
+      "content": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "isPinned": true,
+      "tags": [
+        "Ideas"
+      ],
+      "createdAt": "2024-06-04T14:45:00Z"
+    }
+  ]
+}
