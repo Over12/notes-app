@@ -13,7 +13,7 @@ export default function Page() {
       <section className='mt-5'>
         <div>
           <h2 className='flex items-center gap-1 font-semibold text-2xl'>
-            <IconPin className='text-primary size-7' />
+            <IconPin className='text-accent size-7' />
             Fijadas
           </h2>
           <div className='grid grid-cols-4 gap-5 mt-3'>
