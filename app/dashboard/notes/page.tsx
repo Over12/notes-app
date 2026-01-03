@@ -1,38 +1,24 @@
-import Note from '@/components/common/Note'
-import { IconMoodNeutral, IconPin } from '@tabler/icons-react'
-import { notes } from '@/mocks/note-data.json'
+'use client'
+
+import NoteSection from '@/components/ui/NoteSection'
+import { useNotes } from '@/hooks/useNotes'
+import { IconNotes, IconPin } from '@tabler/icons-react'
+import { useEffect } from 'react'
 
 export default function Page() {
-  const pinnedNotes = notes.filter(note => note.isPinned);
-  const otherNotes = notes.filter(note => !note.isPinned);
+  const { pinnedNotes, otherNotes, fetchNotes } = useNotes()
+
+  useEffect(() => {
+    fetchNotes()
+  }, [fetchNotes])
 
   return (
     <main className='p-10 size-full max-h-screen overflow-y-auto relative'>
       <h1 className='text-3xl font-semibold'>Hecha un vistazo a tus notas!</h1>
       <p className='opacity-80 mt-1'>¿Qué ideas tienes para tus próximas notas?</p>
-      <section className='mt-5'>
-        <div>
-          <h2 className='flex items-center gap-1 font-semibold text-2xl'>
-            <IconPin className='text-accent size-7' />
-            Fijadas
-          </h2>
-          <div className='grid grid-cols-4 gap-5 mt-3'>
-            { pinnedNotes.map(note => (
-              <Note key={note.id} note={note} />
-            ))}
-          </div>
-        </div>
-        <div className='mt-5'>
-          <h2 className='flex items-center gap-1 font-semibold text-2xl'>
-            <IconMoodNeutral className='text-accent size-7' />
-            Otras
-          </h2>
-          <div className='grid grid-cols-4 gap-5 mt-3'>
-            { otherNotes.map(note => (
-              <Note key={note.id} note={note} />
-            ))}
-          </div>
-        </div>
+      <section className='mt-5 space-y-5'>
+        <NoteSection title='Fijadas' notes={pinnedNotes} Icon={IconPin} />
+        <NoteSection title='Otras Notas' notes={otherNotes} Icon={IconNotes} />
       </section>
     </main>
   )
