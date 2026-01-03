@@ -9,7 +9,9 @@ type State = {
 }
 
 type Actions = {
-  fetchNotes: (params?: { limit?: number }) => Promise<void>
+  fetchNotes: (params?: { limit?: number }) => Promise<void>,
+  togglePinNote: (id: string) => void,
+  deleteNote: (id: string) => void
 }
 
 export const useNotes = create<State & Actions>((set) => ({
@@ -38,5 +40,29 @@ export const useNotes = create<State & Actions>((set) => ({
     } finally {
       set({ isLoading: false } )
     }
+  },
+
+  togglePinNote: (id: string) => {
+    set((state) => {
+      const updatedNotes = state.notes.map(note => note.id === id ? { ...note, isPinned: !note.isPinned } : note)
+
+      return {
+        notes: updatedNotes,
+        pinnedNotes: updatedNotes.filter(note => note.isPinned),
+        otherNotes: updatedNotes.filter(note => !note.isPinned)
+      }
+    })
+  },
+
+  deleteNote: (id: string) => {
+    set((state) => {
+      const updatedNotes = state.notes.filter(note => note.id !== id)
+
+      return {
+        notes: updatedNotes,
+        pinnedNotes: updatedNotes.filter(note => note.isPinned),
+        otherNotes: updatedNotes.filter(note => !note.isPinned)
+      }
+    })
   }
 }))
